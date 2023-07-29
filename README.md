@@ -1,15 +1,24 @@
-# J-League Prediction, YATTA! — Wager Optimisation on Asian Handicap with Machine Learning
-<p align="center">
-    <a href="https://bet.hkjc.com/football/index.aspx?lang=en"><img src="https://github.com/Jack-cky/JPY-Wager_Optimisation_on_Asian_Handicap_with_Machine_Learning/blob/main/imgs/surewin.png"></a><br>
-    <i> Credit: <a href="https://www.donotgamble.org.hk/en/index.php"> The Ping Wo Fund </a></i>
-</p>
+<div align="center">
+  <h1>
+    Wager Optimisation
+  </h1>
+  <h3>
+    <i>Predicting J-League Asian Handicap with Machine Learning</i>
+  </h3>
+  <a href="https://bet.hkjc.com/football/index.aspx?lang=en">
+    <img src="./imgs/surewin.png">
+  </a>
+  <p>
+    <i>Credit: <a href="https://www.donotgamble.org.hk/en/index.php">The Ping Wo Fund</a></i>
+  </p>
+</div>
 
 ---
 ### TL;DR
-Used a random forest model (tuned with BayesSearchCV) to predict Asian handicap results on J1-League. The model achieved 64% accuracy and is expected to generate at least HKD 1,560 in 73 football matches.
+We used a random forest model (tuned with BayesSearchCV) to predict Asian handicap results in the J-League. The model achieved 64% accuracy and is expected to generate at least HKD 1,560 in 73 football matches.
 
 <p align="center">
-  <b>DISCLAIMER: THIS PROJECT DOES NOT ENCOURAGE ANY WAGER BEHAVIOUR</b>
+  <b>DISCLAIMER: THIS PROJECT DOES NOT ENCOURAGE ANY WAGERING BEHAVIOUR</b>
 </p>
 
 ---
@@ -43,35 +52,40 @@ J-League-Prediction-YATTA
 
 ---
 ### Background
-"_Small bet for entertainment, big bet become LI Ka Shing._" Wagering on a football match is REALLY exciting. You will never know the result until the last second. The hope and trust in your bet drive you crazy during the 2 hours. Over years of experience, we do not have any strategies for each bet but merely rely on feeling and belief. Approaching to 2022 FIFA World Cup, it has become a hot topic and triggered our motivation to build machine learning models and predict the results of football matches. Putting our expertise into the domain sounds interesting, and we kicked start the project in late October 2022.
+"_Small bets for entertainment, big bets to become like Li Ka-Shing._" Wagering on a football match can be incredibly exciting. The outcome is never certain until the final second, and the hope and trust placed in your bet heighten the thrill throughout the two hours. Despite our years of experience, we have not developed any specific strategies for each wager, instead relying on intuition and conviction. With the 2022 FIFA World Cup approaching, the topic heated up and sparked our motivation to build machine learning models for predicting the outcomes of football matches. We found the idea of applying our expertise to this field interesting, so we kicked off the project in late October 2022.
 
 ---
 ### Data Source
-As the title suggests, this project emphasises on J-League, in specific, J1 league season 2022 only. Because J-League is not as popular as other major football leagues, many data-providing websites do not have a complete set of records. Although the [official website](https://www.jleague.jp/match/) and the [Jockey Club](https://footylogic.com/en/tournament/league/50000009/standings) release match results, it does take time to programme a web scrapper. Fortunately, we found [TotalCorner](https://www.totalcorner.com) shares structured datasets for a variety of leagues with a user-friendly web design. Data is properly cleansed and wrangled for our experiments. We also translated our wager experience into additional features, which aimed to fit the models well.
+As the slogan suggests, this project focuses on the J-League, specifically, the J1 League for the 2022 season. Since the J-League is not as popular as other major football leagues, many data-providing websites lack complete records. Although the [official website](https://www.jleague.jp/match) and the [Jockey Club](https://footylogic.com/en/tournament/league/50000009/standings) release match results, programming a web scraper takes time. Fortunately, we discovered that [TotalCorner](https://www.totalcorner.com) shares structured datasets for a variety of leagues in a user-friendly web design. We properly cleansed and wrangled the data for our experiments, and translated our wagering experience into additional features aimed at improving model fit.
 
-Here we place some assumptions about the data
-- data available on TotalCorner are valid and sound
-- individual records are independent of each other (fundamental assumption of learning algorithms)
+Here we place some assumptions about the data:
+
+- Data available on TotalCorner are valid and sound
+- Individual records are independent of each other (a fundamental assumption of learning algorithms)
 
 ---
 ### Exploratory Data Analysis
-With years of experience, we dare to say wager on [Asian handicap](https://is.hkjc.com/football/info/en/betting/bettypes_hdc.asp) (the handicap) is the trivial and the harshest option to generate profits. This project targets estimating the handicap results and optimises return on investment (ROI).
+With years of experience, we dare to say that wagering on [Asian handicap](https://is.hkjc.com/football/info/en/betting/bettypes_hdc.asp) (the handicap) is both the simplest and the harshest option for generating profits. This project aims to estimate the handicap results and optimise return on investment (ROI).
 
 <p align="center">
-    <a href="https://bet.hkjc.com/football/index.aspx?lang=en"><img src="https://github.com/Jack-cky/JPY-Wager_Optimisation_on_Asian_Handicap_with_Machine_Learning/blob/main/imgs/handicap.png"></a><br>
+  <a href="https://bet.hkjc.com/football/index.aspx?lang=en">
+    <img src="./imgs/handicap.png">
+  </a>
 </p>
 
-For dealer manipulation, the match results are adjusted after the addition of the handicap. The handicap shows the market attitude toward the games. Usually, the handicap would balance the final match results for the 2 playing teams. A half-half outcome is expected on the left-hand-side figure. Besides, teams playing in their stadium would feel more confident and usually outperform the other team. Hence, we can proxy the thinking of dealers when players on the home stadium. The figure on the right-hand side proves the ideas above.
+To account for dealer manipulation, the match results are adjusted after the addition of the handicap. The handicap reflects the market attitude towards the games. Usually, it would balance the final match results for the two playing teams. A half-half outcome is expected, as shown in the left-hand-side figure. Moreover, teams playing at their home stadium typically feel more confident and often outperform the opposing team. Thus, we can use this factor as a proxy for dealer thinking when players are on their home field. The figure on the right-hand side supports these ideas.
 
 <p align="center">
-    <a href="https://bet.hkjc.com/football/index.aspx?lang=en"><img src="https://github.com/Jack-cky/JPY-Wager_Optimisation_on_Asian_Handicap_with_Machine_Learning/blob/main/imgs/stadium.png"></a><br>
+  <a href="https://bet.hkjc.com/football/index.aspx?lang=en">
+    <img src="./imgs/stadium.png">
+  </a>
 </p>
 
-With the supplement of the above figures, can we say that the effect of the home stadium is significant? We undergo several hypothesis tests on the belief. Unfortunately, there is a difference in the effect on the stadium but not significant (less the 5% of our test). Yet, we are not interested in the source of raw data. We worked out several net differences as input features, which improved the learning algorithm's performance.
+Considering the insights from the above figures, can we say that the home stadium effect is significant? We conducted several hypothesis tests to examine this belief. Unfortunately, while there is a difference in the stadium effect, it is not statistically significant (less than 5% in our test). However, we are not solely interested in the raw data source. We calculated several net differences as input features, which improved the performance of the learning algorithm.
 
 ---
 ### Model Building and Evaluation
-To simulate the actual performance of model prediction, we split data into 2 portions where matches after September are considered production data and will be used to calculate ROI. We built 6 models on the project, including a distance-based model, linear models, ensemble tree models and a neural network model. To optimise the performance, we also tune the algorithms with several methodologies, such as `RandomisedSearchCV`, `BayesSearchCV`, `optuna` and `hyperopt`. Since the handicap (response variable) is almost balanced by nature under dealer manipulation, the objective of hyperparameter turning is to maximise accuracy.
+To simulate the actual performance of model prediction, we split the data into two portions, where matches after September are considered production data and will be used to calculate ROI. We built six models for this project, including a distance-based model, linear models, ensemble tree models, and a neural network model. To optimise performance, we also tuned the algorithms with several methodologies, such as `RandomisedSearchCV`, `BayesSearchCV`, `Optuna`, and `Hyperopt`. Since the handicap (response variable) is almost balanced by nature under dealer manipulation, the objective of hyperparameter tuning is to maximise accuracy.
 
 | Model | ACCURACY | AUC | PARAMETERS |
 | --- | --- | --- | --- |
@@ -81,16 +95,19 @@ To simulate the actual performance of model prediction, we split data into 2 por
 | eXtreme Gradient Boosting (Optuna) | 0.616438 | 0.599078 | {'colsample_bytree': 0.38691249885012907, 'eva... |
 | eXtreme Gradient Boosting (Hyperopt) | 0.616438 | 0.569508 | {'colsample_bytree': 0.34187263717236394, 'eva... |
 
-As shown above, ensemble tree models outperform production data while achieving at least 60% accuracy, which beats random guesses. After training the models, it remains 73 games to make wagers. Random Forest with BayesSearchCV (the model) generates at least HKD 1,560 (minimum HKD 200 per bet), which attains 29% ROI. Within 2 months (until the end of the season), the model yielded a positive return with proof of production data. However, we cannot conclude a success for the project and will explain it in the next section.
+As shown above, ensemble tree models outperform production data while achieving at least 60% accuracy, which beats random guesses. After training the models, 73 games remain for wagering. The Random Forest with BayesSearchCV (the model) generates at least HKD 1,560 (minimum HKD 200 per bet), resulting in a 29% ROI. Within two months (until the end of the season), the model yielded a positive return, as evidenced by the production data. However, we cannot conclude the project's success and will explain why in the next section.
 
 ---
 ### Defect and Brainstorm
-Outsider matches are not uncommon in any league. No one knows a game will be an outsider, even dealers, and sometimes it does not really make any sense. For [example](https://www.jleague.jp/match/j1/2022/101203/live/#teamdata), the match was about Yokohama F-Marinos (first in ranking) and Jubilo Iwata (last in ranking). Dealers thought Yokohama F-Marinos should be winning the game and gave a negative handicap to the team. It turned out Jubilo Iwata beats Yokohama F-Marinos.
+Upset matches are not uncommon in any league. No one knows when a game will be an upset, including dealers, and sometimes the outcome does not make much sense. For [example](https://www.jleague.jp/match/j1/2022/101203/live/#teamdata), there was a match between Yokohama F-Marinos (first in ranking) and Jubilo Iwata (last in ranking). Dealers believed Yokohama F-Marinos would win the game and assigned a negative handicap to the team. However, Jubilo Iwata ended up defeating Yokohama F-Marinos.
 
-<p align="center">
-    <a href="https://bet.hkjc.com/football/index.aspx?lang=en"><img src="https://github.com/Jack-cky/JPY-Wager_Optimisation_on_Asian_Handicap_with_Machine_Learning/blob/main/imgs/outsider.png" height="400px"></a><br>
-    <i> Credit: <a href="https://www.jleague.jp/match/j1/2022/101203/live/#teamdata"> jleague.jp </a></i>
-</p>
+<div align="center">
+  <a href="https://bet.hkjc.com/football/index.aspx?lang=en">
+    <img src="./imgs/outsider.png" height="400px">
+  </a>
+  <br>
+  <i>Credit: <a href="https://www.jleague.jp/match/j1/2022/101203/live/#teamdata">jleague.jp</a></i>
+</div>
 
 <pre>
 <b>Model Prediction:
@@ -98,17 +115,17 @@ index    date          home                  away            handicap    results
 2432     2022-10-12    Yokohama F-Marinos    Jubilo Iwata    -2.0        0          -1           1
 </pre>
 
-Our model also thinks that Yokohama F-Marinos should win the game, shown in `y_hat`. Because these events happen sometimes, there is no golden rule to predict the outcome. In other words, it is almost impossible and very difficult for learning algorithms to generalise the pattern, which is also the limit of the project.
+Our model also predicted that Yokohama F-Marinos would win the game, as shown in y_hat. Given that these unexpected events occur sometimes, there is no foolproof method for predicting outcomes. In other words, it is extremely challenging, if not impossible, for learning algorithms to generalise this kind of pattern, which is also a limitation of the project.
 
-We found this problem occurs every season, and fail to train any model at a large scale. We consider the situation as data drifting over time. Under error analysis, experts (we) even fail to make a good sense of the prediction. We rely on the wager strategies and try to bet on different combinations to generate profit. The model we built in the project failed to be put into production in long run, which is the reason why we do not consider it a success for the project.
+We found this problem occurs every season, and we have failed to train any model on a large scale. We consider the situation as data drifting over time. Under error analysis, even our experts struggle to make sense of the predictions. We rely on wagering strategies and try to bet on different combinations to generate profit. The model we built for this project failed to be viable for long-term production, which is why we do not consider it a project success.
 
-After hundreds of experiment loops, we achieved around 80% accuracy _IF WE CAN PREDICT THE MACHE RESULT CORRECTLY_. It sounds really unfeasible and unrealistic to make 100% accuracy on game results, but we may obtain a 60% to 80% accuracy model on the handicap if we could do well on predicting the game results with at least a 70% score of matrics. 
+After hundreds of experimental loops, we achieved around 80% accuracy IF WE CAN PREDICT THE MATCH RESULTS CORRECTLY. It seems infeasible and unrealistic to achieve 100% accuracy in predicting game results, but we may obtain a 60% to 80% accuracy model on the handicap if we could do well in predicting game outcomes with at least a 70% score on metrics.
 
 ---
 ### Acknowledgements
-- discussion on sport even prediction on [Low classification accuracy, what to do next?](https://stats.stackexchange.com/questions/38218/low-classification-accuracy-what-to-do-next)
-- ideas of tuning hyperparameter is referenced from [Hyperparameter Optimization of Machine Learning Algorithms](https://github.com/LiYangHart/Hyperparameter-Optimization-of-Machine-Learning-Algorithms)
+- Discussion on sports event prediction: "[Low classification accuracy, what to do next?](https://stats.stackexchange.com/questions/38218/low-classification-accuracy-what-to-do-next)"
+- Ideas for tuning hyperparameters were referenced from "[Hyperparameter Optimization of Machine Learning Algorithms](https://github.com/LiYangHart/Hyperparameter-Optimization-of-Machine-Learning-Algorithms)"
 
 ---
 ### License
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/Jack-cky/JPY-Wager_Optimisation_on_Asian_Handicap_with_Machine_Learning/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
