@@ -1,0 +1,7 @@
+matplotlib==3.9.0
+pandas==2.2.2
+pyfiglet==1.0.2
+python-dotenv==1.0.1
+requests==2.32.3
+streamlit==1.37.0
+streamlit-navigation-bar==3.3.0

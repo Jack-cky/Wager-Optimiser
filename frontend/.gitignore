@@ -1,0 +1,5 @@
+__pycache__/
+.ipynb_checkpoints/
+static/imgs/team/*
+!static/imgs/team/moto.png
+.DS_Store
