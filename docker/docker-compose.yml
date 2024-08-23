@@ -1,0 +1,25 @@
+services:
+  backend:
+    build: ../backend
+    image: jackcky/wager-optimiser-backend
+    ports:
+      - "8000:8000"
+    networks:
+      - wager-optimiser-network
+
+  frontend:
+    build: ../frontend
+    image: jackcky/wager-optimiser-frontend
+    ports:
+      - "8501:8501"
+    depends_on: 
+    - backend
+    networks:
+      - wager-optimiser-network
+
+networks:
+  wager-optimiser-network:
+
+# volumes:
+#   - ./backend:/wager_optimiser_backend/backend
+#   - ./frontend:/wager_optimiser_frontend/frontend
