@@ -1,0 +1,2 @@
+from .handicap_prediction import get_handicap_predictors
+from .probability_matrix import get_probability_matrix_predictor

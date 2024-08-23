@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1724051088328
+current_stage: None
+description: null
+last_updated_timestamp: 1724051088328
+name: handicap_prediction
+run_id: 497e310daf5249eda6eedf5dc2106cd8
+run_link: null
+source: file:///mount/src/wager-optimiser/backend/mlruns/881729728142090711/497e310daf5249eda6eedf5dc2106cd8/artifacts/model
+status: READY
+status_message: null
+storage_location: file:///mount/src/wager-optimiser/backend/mlruns/881729728142090711/497e310daf5249eda6eedf5dc2106cd8/artifacts/model
+user_id: null
+version: 1

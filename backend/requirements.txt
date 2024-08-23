@@ -1,0 +1,12 @@
+fastapi==0.111.1
+h2o==3.46.0.4
+mlflow==2.15.0
+multielo @ git+https://github.com/djcunningham0/multielo.git@440f7922b90ff87009f8283d6491eb0f704e6624
+pandas==2.2.2
+pydantic==2.8.2
+pyfiglet==1.0.2
+python-dotenv==1.0.1
+pytz==2024.1
+scikit-learn==1.5.1
+scipy==1.14.0
+statsmodels==0.14.2

@@ -1,0 +1,6 @@
+artifact_location: file:///mount/src/wager-optimiser/backend/mlruns/571152194834876015
+creation_time: 1724051026365
+experiment_id: '571152194834876015'
+last_update_time: 1724051026365
+lifecycle_stage: active
+name: probability_matrix

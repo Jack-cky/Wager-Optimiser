@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1724051098804
+current_stage: None
+description: null
+last_updated_timestamp: 1724051098804
+name: bet_decision
+run_id: d338c7083127415f8ca701a4af613000
+run_link: null
+source: file:///mount/src/wager-optimiser/backend/mlruns/347738157746890124/d338c7083127415f8ca701a4af613000/artifacts/model
+status: READY
+status_message: null
+storage_location: file:///mount/src/wager-optimiser/backend/mlruns/347738157746890124/d338c7083127415f8ca701a4af613000/artifacts/model
+user_id: null
+version: 1

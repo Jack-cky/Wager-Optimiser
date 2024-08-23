@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1724051028863
+current_stage: None
+description: null
+last_updated_timestamp: 1724051028863
+name: probability_matrix
+run_id: b54aa7f018ba421aa24300a5a8f2cac5
+run_link: null
+source: file:///mount/src/wager-optimiser/backend/mlruns/571152194834876015/b54aa7f018ba421aa24300a5a8f2cac5/artifacts/model
+status: READY
+status_message: null
+storage_location: file:///mount/src/wager-optimiser/backend/mlruns/571152194834876015/b54aa7f018ba421aa24300a5a8f2cac5/artifacts/model
+user_id: null
+version: 1

@@ -1,0 +1,6 @@
+artifact_location: file:///mount/src/wager-optimiser/backend/mlruns/881729728142090711
+creation_time: 1724051050419
+experiment_id: '881729728142090711'
+last_update_time: 1724051050419
+lifecycle_stage: active
+name: handicap_prediction

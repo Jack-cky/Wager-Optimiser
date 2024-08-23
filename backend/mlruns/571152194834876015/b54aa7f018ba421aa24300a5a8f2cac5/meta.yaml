@@ -1,0 +1,15 @@
+artifact_uri: file:///mount/src/wager-optimiser/backend/mlruns/571152194834876015/b54aa7f018ba421aa24300a5a8f2cac5/artifacts
+end_time: 1724051028905
+entry_point_name: ''
+experiment_id: '571152194834876015'
+lifecycle_stage: active
+run_id: b54aa7f018ba421aa24300a5a8f2cac5
+run_name: gp_glm_202408191503
+run_uuid: b54aa7f018ba421aa24300a5a8f2cac5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1724051026605
+status: 3
+tags: []
+user_id: user
