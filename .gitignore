@@ -1,0 +1,6 @@
+__pycache__/
+.ipynb_checkpoints/
+archive/
+imgs/source
+.DS_Store
+cheatsheet.sh
