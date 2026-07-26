@@ -1,0 +1,45 @@
+[data]
+base = "https://www.forebet.com/"
+match = "https://www.forebet.com/en/football/matches/{}"
+result = "https://www.forebet.com/en/football-tips-and-predictions-for-japan/j1-league/results/{}"
+
+[dependency]
+packages = ["cloudpickle", "pandas", "mlflow", "scikit-learn", "xgboost"]
+
+[mlflow]
+catalog = "betsim"
+model = "xgboost_optuna"
+schema = "models"
+registry_uri = "databricks-uc"
+
+[network]
+port = 5000
+
+[proxy]
+list_url = "https://raw.githubusercontent.com/proxifly/free-proxy-list/main/proxies/protocols/http/data.txt"
+max_attempts = 30
+min_page_bytes = 50000
+
+[schedule]
+cron_schedule = "0 15 * * 4"
+start_from = "2023-01-05"
+timezone = "Asia/Tokyo"
+format_ymd = "%Y-%m-%d"
+
+[sentinel]
+season = 2262
+date = "2262-04-11"
+time = "23:47"
+
+
+[simulator]
+playback_time = 30
+risk_taker = [0.4, 0.6]
+risk_neutral = [0.3, 0.7]
+risk_averse = [0.2, 0.8]
+
+[timeout]
+request = 30
+proxy = 12
+endpoint_poll = 60
+endpoint_ready = 1800

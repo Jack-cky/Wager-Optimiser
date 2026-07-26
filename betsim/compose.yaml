@@ -1,0 +1,31 @@
+name: betsim
+
+services:
+  pipeline:
+    image: jackcky/betsim-pipeline:latest
+    container_name: betsim-pipeline
+    platform: linux/amd64
+    user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
+    build:
+      context: ..
+      dockerfile: betsim/pipeline/Dockerfile
+    volumes:
+      - ../data:/app/data
+    env_file:
+      - ../config/.env
+    environment:
+      POLARS_SKIP_CPU_CHECK: "1"
+    restart: "no"
+
+  simulator:
+    image: jackcky/betsim-simulator:latest
+    container_name: betsim-simulator
+    platform: linux/amd64
+    build:
+      context: ..
+      dockerfile: betsim/simulator/Dockerfile
+    ports:
+      - "5000:5000"
+    env_file:
+      - ../config/.env
+    restart: unless-stopped

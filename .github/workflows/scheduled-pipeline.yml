@@ -1,0 +1,68 @@
+name: Scheduled Pipeline
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 15 * * 4"
+      timezone: "Asia/Hong_Kong"
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    environment: mvp-pipeline
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v5
+
+      - name: Prepare runtime files
+        run: |
+          mkdir -p config data
+          cat > config/.env <<EOF
+          DB_DATABASE=${DB_DATABASE:?}
+          DB_HOST=${DB_HOST:?}
+          DB_PASSWORD=${DB_PASSWORD:?}
+          DB_PORT=${DB_PORT:?}
+          DB_USER=${DB_USER:?}
+          DATABRICKS_ENDPOINT_NAME=${DATABRICKS_ENDPOINT_NAME:?}
+          DATABRICKS_HOST=${DATABRICKS_HOST:?}
+          DATABRICKS_TOKEN=${DATABRICKS_TOKEN:?}
+          MLFLOW_EXPERIMENT_NAME=${MLFLOW_EXPERIMENT_NAME:?}
+          MLFLOW_TRACKING_URI=databricks
+          MLFLOW_RECORD_ENV_VARS_IN_MODEL_LOGGING=false
+          MPLBACKEND=Agg
+          GRAFANA_TOKEN_WO=${GRAFANA_TOKEN_WO:?}
+          GRAFANA_URL=${GRAFANA_URL:?}
+          GRAFANA_USERID=${GRAFANA_USERID:?}
+          EOF
+        env:
+          DB_DATABASE: ${{ secrets.DB_DATABASE }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DATABRICKS_ENDPOINT_NAME: ${{ secrets.DATABRICKS_ENDPOINT_NAME }}
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          MLFLOW_EXPERIMENT_NAME: ${{ secrets.MLFLOW_EXPERIMENT_NAME }}
+          MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
+          GRAFANA_TOKEN_WO: ${{ secrets.GRAFANA_TOKEN_WO }}
+          GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
+          GRAFANA_USERID: ${{ secrets.GRAFANA_USERID }}
+
+      - name: Run pipeline
+        run: |
+          make pipeline || \
+            make pipeline || \
+            make pipeline || \
+            exit 1
+        env:
+          HOST_UID: "0"
+          HOST_GID: "0"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: pipeline-artifacts
+          path: |
+            data/
+          retention-days: 49

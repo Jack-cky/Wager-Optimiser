@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "betsim"
+version = "3.0.1"
+description = "Bet Simulator pipeline and simulator modules"
+license = { text = "MIT" }
+authors = [{ name = "Jack Chan" }]
+requires-python = "~=3.12.0"
+dependencies = [
+    "pandas==2.3.3",
+    "python-dotenv==1.0.1",
+    "PyMySQL==1.2.0",
+    "requests==2.34.2",
+    "SQLAlchemy==2.0.30",
+]
+
+[project.optional-dependencies]
+pipeline = [
+    "beautifulsoup4==4.15.0",
+    "cloudpickle==3.1.2",
+    "cloudscraper==1.2.71",
+    "dagster==1.13.10",
+    "matplotlib==3.10.0",
+    "mlflow==3.14.0",
+    "mrmr-selection==0.2.8",
+    "multielo @ git+https://github.com/djcunningham0/multielo.git@440f7922b90ff87009f8283d6491eb0f704e6624",
+    "nannyml==0.13.1",
+    "numpy==2.1.3",
+    "optuna==4.9.0",
+    "polars[rtcompat]==1.42.1",
+    "pyarrow==18.1.0",
+    "scikit-learn==1.7.2",
+    "scipy==1.16.3",
+    "seaborn==0.13.2",
+    "statsmodels==0.14.6",
+    "xgboost==2.1.4",
+]
+simulator = [
+    "taipy==4.1.1",
+]
+
+[tool.setuptools.packages.find]
+include = ["betsim*"]
