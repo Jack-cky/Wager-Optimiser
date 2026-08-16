@@ -1,4 +1,4 @@
-.PHONY: help build push pipeline simulator down
+.PHONY: help build push pull pipeline simulator down
 
 COMPOSE_FILE := betsim/compose.yaml
 COMPOSE := docker compose -f $(COMPOSE_FILE)
@@ -8,6 +8,7 @@ help:
 	@echo "  make help       # Show available targets"
 	@echo "  make build      # Build the simulator and pipeline container images"
 	@echo "  make push       # Push the simulator and pipeline container images to Docker Hub"
+	@echo "  make pull       # Pull the pipeline container image from Docker Hub"
 	@echo "  make simulator  # Start the simulator service in detached mode"
 	@echo "  make pipeline   # Run the pipeline service using the existing image"
 	@echo "  make down       # Stop and remove services defined in betsim/compose.yaml"
@@ -18,8 +19,11 @@ build:
 push:
 	$(COMPOSE) push
 
+pull:
+	$(COMPOSE) pull pipeline
+
 pipeline:
-	$(COMPOSE) run --rm --pull missing pipeline
+	$(COMPOSE) run --rm --pull never pipeline
 
 simulator:
 	$(COMPOSE) up -d --no-build simulator

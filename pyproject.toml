@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "betsim"
-version = "3.0.1"
+version = "3.1.1"
 description = "Bet Simulator pipeline and simulator modules"
 license = { text = "MIT" }
 authors = [{ name = "Jack Chan" }]

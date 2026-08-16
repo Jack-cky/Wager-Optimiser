@@ -12,7 +12,7 @@ Over the decades, we, as punters, have donated an enormous amount of money to th
   <a href="https://betsim-emulator.onrender.com/"><img src="https://custom-icon-badges.demolab.com/badge/Taipy-ff371a?logo=taipy&logoColor=fff"></a>
   <a href="https://jackcky.grafana.net/public-dashboards/7fd62c726443452e9763d80383f9faa6"><img src="https://custom-icon-badges.demolab.com/badge/Grafana-f15b2a?logo=grafana&logoColor=fff"></a>
   <a href="https://docs.google.com/spreadsheets/d/1hZBngU6REh5M9iyUclPlf8IyO3Iz3ZVW1exo_-vM1ks/pubhtml?gid=278705126&single=true"><img src="https://custom-icon-badges.demolab.com/badge/Backlog-319E4F?logo=Google-Sheets&logoColor=fff"></a>
-  <p><strong>First Published:</strong> 26 November 2022<br><strong>Last Updated:</strong> 26 July 2026</p>
+  <p><strong>First Published:</strong> 26 November 2022<br><strong>Last Updated:</strong> 16 August 2026</p>
 </div>
 
 
@@ -90,9 +90,9 @@ The HCP is an XGBoost classifier that learns from net differences in team proper
 ## Behind the Scenes
 Bet Simulator draws [J1 League](https://www.forebet.com/en/football-tips-and-predictions-for-japan/j1-league) fixture data, match results, and Asian Handicap lines from **Forebet**, forming the foundation of its predictive analysis.
 
-Built with **Taipy**, the simulator offers an interactive playground for exploring matches and testing predictions. On the backend, _Dagster_ orchestrates the MLOps pipeline, preparing the data, managing the **MySQL** database, and training the models that power the application. These models are developed with _statsmodels_ and _XGBoost_. Experiment tracking is handled in **MLflow**, monitoring metrics are pushed to **Prometheus**, and post-deployment performance is monitored through _NannyML_.
+Built with **Taipy**, the simulator offers an interactive playground for exploring matches and testing predictions. On the backend, _Dagster_ orchestrates the MLOps pipeline, preparing the data, managing the **TiDB** database, and training the models that power the application. These models are developed with _statsmodels_ and _XGBoost_. Experiment tracking is handled in **MLflow**, monitoring metrics are pushed to **Prometheus**, and post-deployment performance is monitored through _NannyML_.
 
-The simulator runs on **Render**'s Hobby Plan. The database is hosted on **Layerbase**'s Free tier, model endpoints are served through **Databricks** Free Edition, and operational visibility is supported by **Grafana Cloud**'s free tier. This setup keeps the solution freely accessible, although service disruptions may occur due to free-tier limitations.
+The simulator runs on **Render**'s Hobby Plan. The database is hosted on **TiDB Cloud**'s Starter plan, model endpoints are served through **Databricks** Free Edition, and operational visibility is supported by **Grafana Cloud**'s free tier. This setup keeps the solution freely accessible, although service disruptions may occur due to free-tier limitations.
 
 <div align="center">
   <a href="https://betsim-emulator.onrender.com/"><img src="./imgs/solution_architect.png" width="60%"></a>

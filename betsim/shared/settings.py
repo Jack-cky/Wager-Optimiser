@@ -79,6 +79,11 @@ class ScheduleConfig:
     FORMAT_YMD = TOML["schedule"]["format_ymd"]
 
 
+class SeasonConfig:
+    ROLLOVER_MONTH = TOML["season"]["rollover_month"]
+    SWITCH_YEAR = TOML["season"]["switch_year"]
+
+
 class SentinelConfig:
     SEASON = TOML["sentinel"]["season"]
     DATE = TOML["sentinel"]["date"]

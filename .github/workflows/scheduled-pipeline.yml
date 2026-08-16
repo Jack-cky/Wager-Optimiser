@@ -8,7 +8,7 @@ on:
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
-    environment: mvp-pipeline
+    environment: prod-pipeline
     steps:
       - name: Checkout repo
         uses: actions/checkout@v5
@@ -48,12 +48,16 @@ jobs:
           GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
           GRAFANA_USERID: ${{ secrets.GRAFANA_USERID }}
 
-      - name: Run pipeline
+      - name: Pull pipeline image
         run: |
-          make pipeline || \
-            make pipeline || \
-            make pipeline || \
-            exit 1
+          for i in 1 2 3; do
+            make pull && exit 0
+            sleep 10
+          done
+          exit 1
+
+      - name: Run pipeline
+        run: make pipeline
         env:
           HOST_UID: "0"
           HOST_GID: "0"

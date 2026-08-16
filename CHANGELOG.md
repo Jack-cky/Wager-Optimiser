@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.1.1] - 2026-08-16
+
+Updated the new season schedule and migrated the database away from the unstable host.
+
+### Added
+- Added a `make pull` target to fetch the pipeline image explicitly before execution.
+
+### Changed
+- Updated the GitHub Actions pipeline workflow to pull the image first, then run the pipeline without re-triggering Docker image pulls during execution.
+- Adjusted the Makefile workflow to separate image retrieval from pipeline execution for more reliable scheduled runs.
+- Switched the application database from MySQL to TiDB after the previous host, Layerbase, proved unstable and unreliable.
+
+### Fixed
+- Stabilised the weekly pipeline schedule by avoiding the race-prone `--pull missing` behaviour and reducing intermittent deployment failures.
+
 ## [3.0.1] - 2026-07-26
 
 Rebuilt the project as an end-to-end MLOps workflow with a Dagster pipeline and a Taipy simulator.

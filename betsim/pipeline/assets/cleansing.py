@@ -13,7 +13,7 @@ from dagster import (
 )
 
 from betsim.pipeline.io import write_artefact
-from betsim.shared.settings import ScheduleConfig
+from betsim.shared.settings import ScheduleConfig, SeasonConfig
 
 
 def parse_identifiers(df: pd.DataFrame) -> pd.DataFrame:
@@ -25,7 +25,9 @@ def parse_datetime(df: pd.DataFrame) -> pd.DataFrame:
     jst = pd.to_datetime(df["date"], format="%d/%m/%Y %H:%M %Z", utc=True) \
         .dt.tz_convert(ScheduleConfig.TIMEZONE)
 
-    df["season"] = jst.dt.year
+    new_era_autumn = (jst.dt.year >= SeasonConfig.SWITCH_YEAR) \
+        & (jst.dt.month >= SeasonConfig.ROLLOVER_MONTH)
+    df["season"] = jst.dt.year + new_era_autumn
     df["date"] = jst.dt.strftime("%Y-%m-%d")
     df["time"] = jst.dt.strftime("%H:%M")
     df["gdt"] = df["date"] + " " + df["time"]
