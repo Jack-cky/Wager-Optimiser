@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.1.2] - 2026-09-12
+
+Improved endpoint recovery and scraping reliability after unexpected external service interruptions.
+
+### Added
+- Added `notebooks/99_endpoint_deployment.ipynb` to recreate the Databricks serving endpoint when it has been removed unexpectedly.
+
+### Changed
+- Replaced free-proxy rotation with `cloudscraper` by the ZenRows scraping API, after Forebet's Cloudflare managed challenge began blocking every free proxy and direct request.
+
+### Removed
+- Dropped the `cloudscraper` dependency and the `[proxy]` config section.
+
 ## [3.1.1] - 2026-08-16
 
 Updated the new season schedule and migrated the database away from the unstable host.

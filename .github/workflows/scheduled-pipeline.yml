@@ -32,6 +32,7 @@ jobs:
           GRAFANA_TOKEN_WO=${GRAFANA_TOKEN_WO:?}
           GRAFANA_URL=${GRAFANA_URL:?}
           GRAFANA_USERID=${GRAFANA_USERID:?}
+          ZENROWS_API_KEY=${ZENROWS_API_KEY:?}
           EOF
         env:
           DB_DATABASE: ${{ secrets.DB_DATABASE }}
@@ -47,6 +48,7 @@ jobs:
           GRAFANA_TOKEN_WO: ${{ secrets.GRAFANA_TOKEN_WO }}
           GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
           GRAFANA_USERID: ${{ secrets.GRAFANA_USERID }}
+          ZENROWS_API_KEY: ${{ secrets.ZENROWS_API_KEY }}
 
       - name: Pull pipeline image
         run: |

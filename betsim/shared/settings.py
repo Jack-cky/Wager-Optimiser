@@ -66,10 +66,11 @@ class NetworkConfig:
     PORT = TOML["network"]["port"]
 
 
-class ProxyConfig:
-    LIST_URL = TOML["proxy"]["list_url"]
-    MAX_ATTEMPTS = TOML["proxy"]["max_attempts"]
-    MIN_PAGE_BYTES = TOML["proxy"]["min_page_bytes"]
+class ScraperConfig:
+    API_KEY = os.getenv("ZENROWS_API_KEY")
+    API_URL = TOML["scraper"]["api_url"]
+    MAX_ATTEMPTS = TOML["scraper"]["max_attempts"]
+    MIN_PAGE_BYTES = TOML["scraper"]["min_page_bytes"]
 
 
 class ScheduleConfig:
@@ -99,6 +100,6 @@ class SimulatorConfig:
 
 class TimeoutConfig:
     REQUEST = TOML["timeout"]["request"]
-    PROXY = TOML["timeout"]["proxy"]
+    SCRAPER = TOML["timeout"]["scraper"]
     ENDPOINT_POLL = TOML["timeout"]["endpoint_poll"]
     ENDPOINT_READY = TOML["timeout"]["endpoint_ready"]

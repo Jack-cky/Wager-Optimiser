@@ -12,7 +12,7 @@ Over the decades, we, as punters, have donated an enormous amount of money to th
   <a href="https://betsim-emulator.onrender.com/"><img src="https://custom-icon-badges.demolab.com/badge/Taipy-ff371a?logo=taipy&logoColor=fff"></a>
   <a href="https://jackcky.grafana.net/public-dashboards/7fd62c726443452e9763d80383f9faa6"><img src="https://custom-icon-badges.demolab.com/badge/Grafana-f15b2a?logo=grafana&logoColor=fff"></a>
   <a href="https://docs.google.com/spreadsheets/d/1hZBngU6REh5M9iyUclPlf8IyO3Iz3ZVW1exo_-vM1ks/pubhtml?gid=278705126&single=true"><img src="https://custom-icon-badges.demolab.com/badge/Backlog-319E4F?logo=Google-Sheets&logoColor=fff"></a>
-  <p><strong>First Published:</strong> 26 November 2022<br><strong>Last Updated:</strong> 16 August 2026</p>
+  <p><strong>First Published:</strong> 26 November 2022<br><strong>Last Updated:</strong> 12 September 2026</p>
 </div>
 
 

@@ -30,11 +30,10 @@ from .schedules import (
 from betsim.shared.settings import (
     DatabaseConfig,
     DatabricksConfig,
-    DataSourceConfig,
     GrafanaConfig,
     MLflowConfig,
     ModelDependencyConfig,
-    ProxyConfig,
+    ScraperConfig,
     TimeoutConfig,
 )
 
@@ -78,12 +77,11 @@ resources = {
         user=GrafanaConfig.USER,
     ),
     "scraper": ScraperResource(
-        referer=DataSourceConfig.BASE,
-        list_url=ProxyConfig.LIST_URL,
-        max_attempts=ProxyConfig.MAX_ATTEMPTS,
-        min_page_bytes=ProxyConfig.MIN_PAGE_BYTES,
-        timeout=TimeoutConfig.REQUEST,
-        proxy_timeout=TimeoutConfig.PROXY,
+        api_url=ScraperConfig.API_URL,
+        api_key=ScraperConfig.API_KEY,
+        max_attempts=ScraperConfig.MAX_ATTEMPTS,
+        min_page_bytes=ScraperConfig.MIN_PAGE_BYTES,
+        timeout=TimeoutConfig.SCRAPER,
     ),
 }
 

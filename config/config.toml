@@ -15,9 +15,9 @@ registry_uri = "databricks-uc"
 [network]
 port = 5000
 
-[proxy]
-list_url = "https://raw.githubusercontent.com/proxifly/free-proxy-list/main/proxies/protocols/http/data.txt"
-max_attempts = 30
+[scraper]
+api_url = "https://api.zenrows.com/v1/"
+max_attempts = 3
 min_page_bytes = 50000
 
 [season]
@@ -44,6 +44,6 @@ risk_averse = [0.2, 0.8]
 
 [timeout]
 request = 30
-proxy = 12
+scraper = 90
 endpoint_poll = 60
 endpoint_ready = 1800

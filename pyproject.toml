@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "betsim"
-version = "3.1.1"
+version = "3.1.2"
 description = "Bet Simulator pipeline and simulator modules"
 license = { text = "MIT" }
 authors = [{ name = "Jack Chan" }]
@@ -21,7 +21,6 @@ dependencies = [
 pipeline = [
     "beautifulsoup4==4.15.0",
     "cloudpickle==3.1.2",
-    "cloudscraper==1.2.71",
     "dagster==1.13.10",
     "matplotlib==3.10.0",
     "mlflow==3.14.0",
